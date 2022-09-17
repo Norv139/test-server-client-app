@@ -13,8 +13,6 @@ FROM python:latest
 
 ADD server.py /server/
 ADD index.html /server/
-ADD ./src/index.js /server/
-ADD ./src/styles.css /server/
 
 # Здесь мы воспользуемся командой 'WORKDIR', возможно, новой для вас.
 # Она позволяет изменить рабочую директорию образа.

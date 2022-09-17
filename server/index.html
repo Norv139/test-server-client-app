@@ -13,6 +13,55 @@
     <div id="display-image"></div>
     <div id="image-box"></div>
 
-    <script src="src/index.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      #display-image{
+        width: 400px;
+        height: 200px;
+        border: 1px solid black;
+        background-position: center;
+        background-size: cover;
+      }
+      #image-box{
+        margin-top: 30px;
+        grid-template-columns: auto auto auto auto;
+
+      }
+
+      #image-box img{
+        height: 200px;
+        margin: 20px;
+      }
+    </style>
+
+    <script>
+
+      const image_input = document.querySelector("#image-input");
+      const display_image = document.querySelector("#display-image");
+      const image_box = document.querySelector("#image-box");
+
+
+
+      image_input.addEventListener("change", function () {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          const uploaded_image = reader.result;
+
+          console.log(reader.result);
+
+          display_image.style.backgroundImage = `url(${uploaded_image})`;
+
+          var img = document.createElement("img")
+
+          img.setAttribute("src", uploaded_image);
+          image_box.appendChild(img);
+        });
+        reader.readAsDataURL(this.files[0]);
+      });
+
+    </script>
   </body>
 </html>
